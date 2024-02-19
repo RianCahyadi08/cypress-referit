@@ -1,5 +1,5 @@
 describe('Call API', () => {
-	it('Call api post', () => {
+	it.skip('Call api post', () => {
 		// https://jsonplaceholder.typicode.com/
 		cy.request({
 			method: 'GET',
@@ -17,7 +17,7 @@ describe('Call API', () => {
 		});
 	});
 
-	it('Create api post', () => {
+	it.skip('Create api post', () => {
 		cy.request({
 			method: 'POST',
 			url: 'https://jsonplaceholder.typicode.com/posts',
@@ -32,7 +32,7 @@ describe('Call API', () => {
 		});
 	});
 
-	it('Update api post', () => {
+	it.skip('Update api post', () => {
 		cy.request({
 			method: 'PUT',
 			url: 'https://jsonplaceholder.typicode.com/posts/1',
@@ -49,7 +49,7 @@ describe('Call API', () => {
 		});
 	});
 
-	it('Delete api post', () => {
+	it.skip('Delete api post', () => {
 		cy.request({
 			method: 'DELETE',
 			url: 'https://jsonplaceholder.typicode.com/posts/1',

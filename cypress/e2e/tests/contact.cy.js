@@ -1,19 +1,21 @@
-import Contact from '../../lib/contact.cy';
-import User from '../../lib/user.cy';
+import Login from '../../pom/login_objects.cy';
+import Contact from '../../pom/contact_object.cy';
 
 describe('User access contact module', function () {
-	const userObject = new User();
+	const loginObject = new Login();
 	const contactObject = new Contact();
 
 	context('Given I dashboard page', () => {
 		beforeEach(() => {
 			cy.visit('https://app-dev.referit.co/login');
-			userObject.login('rian.cahyadi@flexidev.co', 'P@55word');
+			loginObject.setEmail('rian.cahyadi@flexidev.co');
+			loginObject.setPassword('P@55word12');
+			loginObject.clickBtnLogin();
+			contactObject.clickContactModule();
 		});
 
 		context('When I click contact module', () => {
 			it('Then I will be redirected to contact new tab page', () => {
-				contactObject.clickContactModule();
 				cy.screenshot('contact page');
 			});
 		});

@@ -199,6 +199,51 @@ class Settings {
 			});
 		cy.wait(1000);
 	}
+
+	tabAccount() {
+		cy.get(
+			"div[class='v-application--wrap'] div:nth-child(3) button:nth-child(1) span:nth-child(1)"
+		).click();
+		cy.title().should('eq', 'Referit - Settings');
+	}
+
+	addPaymentMethod() {
+		cy.get(
+			"button[class='btn-txt-transform-none font-size-12 font-weight-400 ml-2 v-btn v-btn--outlined v-btn--rounded theme--dark elevation-0 v-size--small'] span[class='v-btn__content']"
+		).click();
+		cy.get('.font-size-24.text-center.text-main4.font-weight-bold').should(
+			'be.visible'
+		);
+		cy.wait(1000);
+	}
+
+	inputCardNumber(value) {
+		cy.get('input[name="cardnumber"]').type(value, { force: true });
+	}
+
+	inputExpiry(value) {
+		cy.get('input[name="exp-date"]').type(value);
+		cy.get('input[name="exp-date"]').should('have.value', value);
+	}
+
+	inputCVC(value) {
+		cy.get('input[name=cvc]').type(value);
+		cy.get('input[name=cvc]').should('have.value', value);
+	}
+
+	clickBtnAddPaymentMethod() {
+		cy.get(
+			'button[class*="text-decoration-none white--text btn-txt-transform-none bg-main4 my-auto mt-1 ml-1 v-btn v-btn--disabled v-btn--has-bg v-btn--rounded theme--light v-size--default"]'
+		).click();
+	}
+
+	downloadPaid() {
+		cy.get(
+			'i[class*="v-icon notranslate mdi mdi-arrow-down theme--dark"]'
+		).click();
+		cy.wait(5000);
+		cy.readFile('cypress/downloads/Invoice-686BEBD5-0001.pdf');
+	}
 }
 
 export default Settings;
